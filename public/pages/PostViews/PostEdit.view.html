@@ -1,0 +1,35 @@
+<section class="user-account-section">
+    <div class="container">
+        <div class="user-account-tabs ui-tabs ui-widget ui-widget-content ui-corner-all">
+
+            <!-- Body -->
+            <div class="tabs-body">
+                <div class="main-loader">
+
+                </div>
+
+                <div id="submit" aria-labelledby="ui-id-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-hidden="false" style="display: block;">
+                    <form class="submit-form">
+                        <h1>Edit Post</h1><br>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <input type="text" class="js-input" placeholder="Tittle" ng-model="title">
+                                <textarea class="js-input" placeholder="Description" ng-model="content">{{ content }}</textarea>
+
+                                <div class="row row-fit-10">
+                                    <div class="col-sm-9">
+                                        <select data-ng-options="cat.name for cat in categories track by cat.name" ng-model="category"></select>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+
+                        <input ng-click="editPost()" class="button theme-button-2" type="submit" value="Edit your Post">
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

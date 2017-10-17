@@ -1,0 +1,57 @@
+<div class="container">
+    <div id="mean choice" ng-if="show==true" style="padding:200px;" ng-if="show==true">
+        <form class="form-group" style="border :1px solid black;width:500px;height:300px;margin:auto;">
+            <h1 style="text-align : center;color: #337ab7;">Choisissez votre moyen de transport</h1>
+            <select class="custom-select" style="margin-left:auto;margin-right:auto;margin-top:50px;display:block;padding:15px;
+             border:1px solid darkgrey;font-family:sans-serif;font-weight:bold;font-size:16px;border-radius:8px;"ng-model="selected"
+                    ng-change="showcomments(selected)">
+                <option selected ng-repeat="mean in means" value="{{mean.name}}">{{mean.type+ " : "+mean.name}}</option>
+            </select>
+        </form>
+    </div>
+    <div class="row" ng-if="show==false" style="
+    padding-top:70px; ">
+        <!-- Contenedor Principal -->
+        <div class="comments-container" >
+
+            <ul id="comments-list" class="comments-list">
+                <li ng-repeat="comment in comments" >
+                    <div class="comment-main-level">
+                        <!-- Avatar -->
+                        <div class="comment-avatar" ng-click="addlike(comment)"><img src="../assets/img/comment-avatar.jpg" alt=""></div>
+                        <!-- Contenedor del Comentario -->
+                        <div class="comment-box">
+                            <div class="comment-head">
+
+                                <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">{{comment.user}}</a></h6>
+                                <span id="heart-wrapper" ng-if="comment.user == user">
+                                    <span id="heart" ng-click ="addlike(comment)" ></span>
+                                    <sapn class="likes-number">{{comment.likes.length}}</sapn>
+                                </span>
+
+                                <span id="heart-wrapper1" ng-if="comment.user != user">
+                                    <span id="heart1" ng-click ="addlike(comment)" ></span>
+                                    <sapn class="likes-number">{{comment.likes.length}}</sapn>
+                                </span>
+                                <img src="../assets/img/edit.png" ng-if="comment.user==user" ng-click="update($event,comment._id)"/>
+                                <img src="../assets/img/téléchargement.jpg" ng-click="delete(comment._id)" ng-if="comment.user==user" />
+
+                            </div>
+                            <div class="comment-content">
+                                <span class="span">{{comment.message}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </li>
+            </ul>
+            <div id="new-comment">
+
+                <div class="avatar"><img src="../assets/img/comment-avatar.jpg"/></div>
+                <div class="input"><input ng-model="message"  ng-keyup="add($event,message)" type="text" placeholder="exprimez-vous ....."  id="input" ng-change ="dosomething()" ></div>
+
+            </div>
+        </div>
+    </div>
+</div>

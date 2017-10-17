@@ -1,0 +1,201 @@
+<!DOCTYPE html5>
+<html ng-app="mean-stack" lang="fr">
+<head>
+	<meta charset="utf-8" />
+	<title>Trip Planner</title>
+	<meta name="description" content="Here goes description" />
+	<meta name="author" content="author name" />
+	<link rel="shortcut icon" href="assets/img/favicon2.png" type="image/x-icon" />
+
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<!-- Style CSS -->
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="assets/css/scrollbar.css" />
+	<link rel="stylesheet" href="assets/css/comments.css" />
+	<link rel="stylesheet" href="assets/css/owl-carousel.css" />
+	<link rel="stylesheet" href="assets/css/bootstrap.css" />
+	<link rel="stylesheet" href="assets/css/lightbox.css" />
+	<link rel="stylesheet" href="assets/css/animate.css" />
+	<link rel="stylesheet" href="assets/css/bxslider.css" />
+	<link rel="stylesheet" href="assets/css/nouislider.css" />
+	<link rel="stylesheet" href="assets/css/icomoon.css" />
+	<link rel="stylesheet" href="assets/css/screen.css" />
+<<<<<<< HEAD
+	<link rel="stylesheet" href="assets/css/datepicker.css" />
+=======
+	<link rel="stylesheet" href="assets/css/login.css" />
+	<link rel="stylesheet" href="assets/css/register.css" />
+
+
+
+>>>>>>> b7f71548e3bd2a17b9a3f55390ed77096e5475e9
+
+	<!-- Scripts -->
+
+	<script>document.write('<base href="' + document.location + '" />');</script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="lib/angular.js"></script>
+	<script src="lib/angular-route.js"></script>
+	<script src="lib/angular-resource.js"></script>
+	<script src="lib/ngStorage.js"></script>
+	<script src="lib/angucomplete-alt.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+	<script src="lib/angularjs-google-maps.js"></script>
+	<!--   <script src="assets/js/options.js"></script>-->
+	<script src="app.js"></script>
+	<script src="pages/Controllers/Socket.js"></script>
+	<script src="pages/home.controller.js"></script>
+	<script src="pages/comments.controller.js"></script>
+	<script src="pages/user.controller.js"></script>
+	<script src="pages/Controllers/PostController.js"></script>
+	<script src="pages/payment.controller.js"></script>
+	<script src="pages/payment.controller.js"></script>
+	<script src="lib/bootstrap-datepicker.js"></script>
+
+
+
+</head>
+<body data-smooth-scroll="on">
+
+<div id="test">
+	<header>
+		<!-- Navigation -->
+		<nav>
+			<ul>
+				<li class="listing menu-item-has-children"><a href="#/posts/list">Posts</a></li>
+				<li class="property"><a href="#/Payment">Payment</a></li>
+				<li class="blog"><a href="#/comments">Comments</a></li>
+			</ul>
+		</nav>
+
+
+		<div class="right-block">
+			<ul class="social-block">
+				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+				<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+				<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+			</ul>
+			<ul class="navigation">
+				<li class="listing menu-item-has-children"><a href="#/posts/list">Posts</a></li>
+				<li class="property"><a href="#/Payment">Payment</a></li>
+				<li class="blog"><a href="#/comments">Comments</a></li>
+			</ul>
+
+			<p id="loginlogout"><a  href="#/login">Login</a> / <a href="#/register">Register</a></p>
+		</div>
+
+
+		<span class="menu-toggle cmn-toggle-switch cmn-toggle-switch__htx">
+				<span>toggle menu</span>
+			</span>
+
+
+		<a href="index.html" class="brand">
+
+			<img src="assets/img/logo1.png" alt="logo" />
+
+		</a>
+	</header>
+	<div class="login-form-popup">
+		<div class="login-form" id="login-popup">
+			<div class="brand-wrapper">
+				<img src="assets/img/logo1.png" alt="login brand" />
+			</div>
+
+			<form id="login-form">
+				<input class="js-input" type="text" placeholder="Login" />
+				<input class="js-input" type="password" placeholder="Password" />
+
+				<input type="submit" value="Login" class="submit-button" />
+
+				<div class="options">
+					<label>
+						<input type="checkbox" />
+						<span>Remember me</span>
+					</label>
+					<a class="remember-password" href="#">Forgotten the password</a>
+				</div>
+			</form>
+
+			<form id="register-form">
+				<input class="js-input" type="text" placeholder="First Name" />
+				<input class="js-input" type="text" placeholder="Last Name" />
+				<input class="js-input" type="text" placeholder="Login" />
+				<input class="js-input" type="password" placeholder="Password" />
+				<input class="js-input" type="password" placeholder="Confirm password" />
+
+				<input type="submit" value="Register" class="submit-button" />
+			</form>
+
+			<div class="sign-in-options">
+				<span>Sign in</span>
+				<a class="facebook" href="my-profile.html">Facebook</a>
+				<a class="google" href="my-profile.html">Google</a>
+			</div>
+
+			<p class="register-link"><i>Don't have an account?</i> <a href="#" class="register-btn">Register here</a></p>
+		</div>
+	</div>
+	<div class="content-wrapper">
+
+
+
+
+		<div ng-view></div>
+
+		<section class="hot-offer">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="caption">
+							<img src="assets/img/logo1.png" alt="logo" />
+						</div>
+					</div>
+
+					<div class="col-sm-18">
+						<div class="hot-offer-slider">
+							<p>
+								<a href="single-full-width.html">"Trip Planner" is all that we need to travel smarter by public transport.This solution makes it possible to calculate, in real time, the itineraries of urban transport users, by combining several modes of transport.</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer>
+			<div class="container">
+				<div class="copyrigts">
+					<p>Copyrights 2017. Designed by Fanatix-Web</p>
+				</div>
+			</div>
+		</footer>
+
+
+	</div>
+
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/jquery-ui.js"></script>
+<script src="assets/js/infobox.js"></script>
+<script src="assets/js/bxslider.js"></script>
+<script src="assets/js/marquee.js"></script>
+<script src="assets/js/nouislider.js"></script>
+<script src="assets/js/modernizr.js"></script>
+<script src="assets/js/imagesloaded.js"></script>
+<script src="assets/js/smooth-scroll.js"></script>
+<script src="assets/js/owl-carousel.js"></script>
+<script src="assets/js/isotope.js"></script>
+<script src="assets/js/theia.js"></script>
+<script src="assets/js/lightbox.js"></script>
+<!--<script src="assets/js/script.js"></script> -->
+
+</body>
+</html>
+
+

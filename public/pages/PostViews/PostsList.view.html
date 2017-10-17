@@ -1,0 +1,55 @@
+<section class="blog-section" style="transform: none;">
+    <div class="row" style="transform: none;">
+        <div class="col-lg-24 col-md-24 blog-content-wrapper">
+
+            <div class="blog-content">
+
+                <div class="row" style="margin: 10px 0;">
+
+                    <div class="col-md-18 col-md-offset-3" style="background: white;">
+
+                        <a class="submit-btn" href="/#/post/add/" style="background: 0;display: inline-block;
+                        text-transform: uppercase;color: #ff5252;font-size: 12px; font-weight: 700;line-height: 1em;
+                        border-radius: 25px;border: 3px solid #ff5252; padding: 12px 25px; margin: 10px;">Add New Post</a>
+                        <span style="margin-left: 564px;color: #ff5252;font-size: 14px;font-weight: 700;">Search by category :</span>
+                        <select data-ng-options="cat.id for cat in categories track by cat.id" ng-model="category" style="float: right; margin-top: 20px;border: 3px solid #ff5252;"></select>
+
+                    </div>
+
+                </div>
+
+                <div class="row row-fit-10">
+
+                    <div class="col-md-18 col-md-offset-3" ng-repeat="post in posts" ng-hide="ifIsHidden(post)">
+                        <div class="blog-post sticky post-with-image">
+                            <div class="post-body">
+                                <div class="blog-post-meta">
+                                    <div class="post-author">
+                                        <p>{{post.author}}</p>
+                                    </div>
+                                </div>
+                                <h2 class="post-title"><a href="/#/post/show/{{post._id}}">{{post.title}}</a></h2>
+
+                                <p>{{post.postcontent}}</p>
+
+                                <div class="post-meta">
+                                    <ul class="meta">
+                                        <li class="calendar">{{post.created | date:"dd/MM/yyyy"}}</li>
+                                        <li class="comments">{{post.comments.length}}</li>
+                                        <li class="fa fa-eye">{{post.views}}</li>
+                                    </ul>
+
+                                    <a class="post-link" href="/#/post/show/{{post._id}}">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+</section>

@@ -1,0 +1,81 @@
+
+<section class="properties-map">
+	<div class="row row-fit">
+		<div class="col-md-9 col-lg-7">
+			<div class="map-filter-box" style="!important; height: 1000px;">
+				<div class="box-caption">
+					<h4>Search</h4>
+					<p>Where are you looking?</p>
+
+				</div>
+				<div>
+					<input class="filter-box-input js-input no-select" type="text" value="" placeholder="Depart" gm-places-autocomplete ng-model="autocomplete_depart"/>
+				</div>
+				<div>
+					<input class="filter-box-input js-input no-select" type="text" value="" placeholder="Destinations" gm-places-autocomplete ng-model="autocomplete_destination"/>
+				</div>
+				<div class="price-box">
+					<p class="caption"><i>Distance</i> &#40;<span class="min"></span>m - <span class="max"></span>m&#41;</p>
+					<div class="price-slider" data-min="0" data-max="1000" data-start="0" data-stop="10" data-step="1"></div>
+					<div class="price-limits clearfix">
+						<span class="lower">100 m</span>
+						<span class="upper">1000 m</span>
+					</div>
+				</div>
+
+				<a  class="button theme-button-1 update-properties" ng-click="getPropositions()"  style="cursor:pointer" id="x">Find path</a>
+				<br> <br>
+				<div ng-if="empty == true" style="height:300px; width:380px;text-align: center; background-color: white;">
+					<br>
+
+					<img src="../assets/img/oops.png" alt="" height="50%" width="50%" >
+					<h4> Sorry! we haven't found any any proposition. Please try to choose another destination</h4>
+
+				</div>
+				<div ng-show="display">
+
+					<div class="box-caption" style="background-color:#b71c1c; text-align: center;">
+						<h4 style=" padding: 10px; color: white;">All propositions</h4>
+						<h6 style=" color: white;">Choose your path</h6>
+					</div>
+					<br>
+
+					<div class="scrollbar" class="style-2" ng-show="display">
+						<div class="force-overflow">
+							<div ng-repeat="proposition in propositions track by $index">
+								<div ng-repeat="prop in proposition track by $index">
+									<div style="cursor:pointer; background-color:white; margin-top: 20px; margin-left: 10px; height:150px; width:380px;" ng-click="findPath(prop);">
+										<div style=" height:50px; width:380px; background-color: #004d99">
+											<div ng-repeat="aa in prop.moyens track by $index" style="display:inline;">
+												<img ng-if= "aa.type == 'train'" src="../assets/img/train.png" alt="">
+												<img  ng-if="aa.type == 'metro'" src="../assets/img/metro.png" alt="">
+												<img ng-if="aa.type == 'bus'" src="../assets/img/bus.png" alt="">
+												<span style="display:inline-block;padding:7px;border-radius:50%;background:grey;color:white">{{aa.ref}}</span>
+												<img ng-if="$index != prop.moyens.length-1" src="../assets/img/nextMean.png" alt="">
+											</div>
+										</div>
+										<br>
+										<div style=" height:100px; width:380px; margin-left: 10px; margin-right: 10px;">
+											<p>
+												Prends le {{prop.moyens[0].type}} numero {{prop.transport_depart}} de l'arret de départ <stong style="color: #b30000;">{{prop.depart}}</stong>
+												descend dans l'arret <strong>{{prop.transit}}</strong> et Prend le {{prop.moyens[1].type}} numero {{prop.transport_transit}}
+												pour arriver à <strong style="color: #b30000;">{{prop.arrivee}}</strong>
+											</p>
+										</div>
+									</div>
+									<br>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-15 col-lg-17">
+			<div class="map" id="map-canvas"></div>
+		</div>
+	</div>
+</section>
+
+
+

@@ -1,0 +1,78 @@
+
+		<!-- Main Content -->
+		<div class="content-wrapper">
+			<!-- User Account Section -->
+			<section class="user-account-section">
+				<div class="container">
+					<div class="user-account-tabs">
+
+						<!-- Body -->
+						<div class="tabs-body">
+
+							<div id="submit">
+								<form class="submit-form">
+									<div class="row">
+										<div class="col-md-11">
+											<ul class="heading">
+												<li><a class="submit"><span>Pay and Take your ticket</span></a></li>
+											</ul>
+											<div class="form-group">
+												<select ng-options="item as item.Station for item in stationTrain1 track by item.Ref" ng-model="depart" class="form-control" ng-change="changePrice(depart.Ref,destination.Ref,tarif.id)">
+													<option value="">-- choose station --</option>
+												</select>
+
+											</div>
+
+											<div class="form-group">
+												<select ng-options="item as item.Station for item in stationTrain2 track by item.Ref" ng-model="destination" class="form-control" ng-change="changePrice(depart.Ref,destination.Ref,tarif.id)">
+													<option value="">-- choose station --</option>
+												</select>
+											</div>
+
+											<div class="form-group">
+												<select ng-options="item as item.type for item in tarifs track by item.id" ng-model="tarif" class="form-control" ng-change="changePrice(depart.Ref,destination.Ref,tarif.id)">
+													<option value="">-- choose tarif --</option>
+												</select>
+
+											</div>
+
+											<input type="text" class="js-input" placeholder="number of cart" ng-model="num"/>
+
+											<div class="row row-fit-10">
+												<div class="col-sm-12">
+													<input type="text" class="js-input nr-only " placeholder="Price Dt" ng-model="price" value="{{price}}" />
+												</div>
+												<div class="input-append date col-sm-12" >
+													<input class="span2" id="dp3" size="16" type="text" placeholder="Date of reservation" ng-model="dateTicket"/>
+												</div>
+
+											</div>
+											<div>
+												<input class="button theme-button-2" type="submit" value="Pay for your ticket" ng-click="pay(dateTicket,price,num,destination.Station,depart.Station)"/>
+											</div>
+											<br>
+											<div ng-if="idMsg == 1" class="alert alert-success">
+												<strong>{{msg}} !</strong>
+											</div>
+											<div ng-if="idMsg == 0" class="alert alert-danger">
+												<strong>{{msg}} !</strong>
+											</div>
+
+										</div>
+										
+										<div class="col-md-13 col-lg-offset-1 col-lg-12">
+
+											<div class="location-on-map">
+												<img src="assets/img/carte_banlieu_sud.jpg" alt="logo" />
+											</div>
+										</div>
+									</div>
+
+								</form>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>

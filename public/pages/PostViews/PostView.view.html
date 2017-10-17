@@ -1,0 +1,137 @@
+<section class="blog-section" style="transform: none;">
+    <div class="row" style="transform: none; background: #f4f4f4">
+        <div class="col-lg-16 col-md-16 col-lg-offset-4 col-md-offset-4 blog-content-wrapper">
+
+
+
+            <div class="blog-content" ng-model="post">
+                <div class="single-blogpost post-with-image">
+                    <!-- Post Meta -->
+                    <div class="post-meta">
+                        <div style="min-height: 40px;">
+
+                            <a href="/#/posts/list"><i style="color: #b71c1c;margin-left: 16px;margin-top: -20px;" class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></a>
+                            <a class="submit-btn" href="/#/post/edit/{{ post._id }}" style="background: 0;display: inline-block; text-transform: uppercase;
+                            color: #ff5252;font-size: 11px;font-weight: 700;line-height: 1em; border-radius: 25px;border: 3px solid #ff5252;
+                            padding: 12px 25px; margin-top: -25px; margin-right: 15px; float: right;">Edit post</a>
+                            <a class="submit-btn" href="" style="background: 0;display: inline-block; text-transform: uppercase;
+                            color: #ff5252;font-size: 11px;font-weight: 700;line-height: 1em; border-radius: 25px;border: 3px solid #ff5252;
+                            padding: 12px 25px; margin-top: -25px; margin-right: 15px; float: right;" ng-click="deletePost()">Delete post</a>
+
+                        </div>
+                        <h2 class="post-title">{{post.title}}</h2>
+
+                        <ul class="meta">
+                            <li class="date">{{post.created | date:"dd/MM/yyyy"}}</li>
+                            <li class="comments">{{post.comments.length}}</li>
+                            <li class="fa fa-eye">{{post.views}}</li>
+                        </ul>
+                    </div>
+
+                    <!-- Post Body -->
+                    <div class="post-body">
+
+                        <p style="font-size: 16px; line-height: 1;color: #333;">{{post.postcontent}}</p>
+
+                        <!-- Social Block -->
+                        <div class="share-block">
+                            <ul class="expanded">
+                                <li>
+                                    <a href="#" ng-click="msharefb()"><i class="fa fa-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" ng-click="twitershare()"><i class="fa fa-twitter"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="post-author">
+
+                               <p class="date">
+                                   <span class="col-md-10">{{post.created | date:"dd-MM-yyyy @ h:mm a"}}</span>
+                                   <span class="col-md-4" style="height: 32px; padding-top: 10px;"><a href="" style="padding-right:10px" class="fa fa-thumbs-o-up" aria-hidden="true"
+                                             ng-click="upvotePost(post)">{{post.upvotes}}</a></span>
+                                   <span class="col-md-6" style="height: 32px; padding-top: 10px;"><a href="" class="fa fa-thumbs-o-down" aria-hidden="true"
+                                            ng-click="downvotePost(post)">{{post.downvotes}}</a></span>
+                                   <span class="col-md-10" style="margin-top: -2px;margin-right: -185px;float: right;">{{post.author}}</span>
+                               </p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Comments Area -->
+                <div class="comments-area">
+                    <div class="section-header small">
+                        <h4 style="font-family: cursive;font-size: 20px;">Comments</h4>
+                        <p>Don't forget to share your comment!</p>
+                    </div>
+
+                    <!-- Comments List -->
+                    <div class="commments-wrapper" ng-repeat="comment in tabComments | orderBy : -comment.created">
+                        <ul class="comments-list">
+                            <li class="comment">
+                                <div class="user">
+                                </div>
+
+                                <div class="comment-body">
+                                    <div class="message">
+                                        <p ng-if="!tabbool[$index]">{{comment.body}}</p>
+                                        <input ng-model="comment.body" ng-keyup="$event.keyCode == 13 && updatemycomment(comment,_$index)"  ng-if="tabbool[$index]"  value="{{ comment.body}}"></input>
+                                    </div>
+
+                                    <div class="comment-info">
+                                        <p class="author">{{comment.author}}</p>
+                                        <p class="date">{{comment.created | date:"dd-MM-yyyy @ h:mm a"}}</p>
+                                        <p><a href="" style="padding-right:10px" class="fa fa-thumbs-o-up" aria-hidden="true"
+                                              ng-click="upvoteComment(post,comment)">{{comment.upvotes}}</a></p>
+                                        <p><a href="" class="fa fa-thumbs-o-down" aria-hidden="true"
+                                              ng-click="downvoteComment(post,comment)">{{comment.downvotes}}</a></p>
+                                        <p style="margin-top: 7px;float: right;">
+                                            <a href="" class="fa fa-trash-o" ng-click="deleteComment(comment)" aria-hidden="true">
+                                            </a></p>
+                                        <p><button ng-click="updateComment(comment,$index)">Update</button></p>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <!-- Response Form -->
+                    <form class="comment-form">
+                        <div class="form-body clearfix">
+                            <div class="message">
+                                <textarea class="js-input form-input" placeholder="Leave a comment" ng-model="body"></textarea>
+                            </div>
+
+                            <input type="submit" value="add a comment" class="submit-button"  ng-click="addComment()">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script language="javascript">
+
+
+            $( document ).ready(function() {
+                console.log('ready');
+                $('#fbshare').on('click',function () {
+                    console.log('here');
+                    window.open("https://www.facebook.com/plugins/share_button.php?href="+escape(window.location.href)+"&layout=button&size=large&mobile_iframe=true&width=88&height=28&appId");
+                });
+
+                function fbshareCurrentPage()
+                {
+                    window.open("https://www.facebook.com/plugins/share_button.php?href="+escape(window.location.href)+"&layout=button&size=large&mobile_iframe=true&width=88&height=28&appId");
+                }
+            });
+
+        </script>
+
+
+    </div>
+</section>

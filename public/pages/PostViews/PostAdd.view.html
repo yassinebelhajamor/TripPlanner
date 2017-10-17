@@ -1,0 +1,47 @@
+<section class="user-account-section">
+    <div class="container">
+        <div class="user-account-tabs ui-tabs ui-widget ui-widget-content ui-corner-all">
+
+
+            <!-- Body -->
+            <div class="tabs-body">
+                <div class="main-loader">
+
+                </div>
+
+
+                <div id="submit" aria-labelledby="ui-id-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-hidden="false" style="display: block;">
+                    <form class="submit-form">
+                        <h1>Add Post</h1><br>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <input required type="text" class="js-input" placeholder="Tittle" ng-model="title">
+                                <textarea required class="js-input" placeholder="Description" ng-model="content"></textarea>
+
+                                <div class="row row-fit-10">
+                                    <div class="col-sm-12">
+                                        <input type="text" class="js-input  nr-only" placeholder="Username" ng-model="author">
+                                    </div>
+                                </div>
+
+                                <div class="row row-fit-10">
+                                    <div class="col-sm-9">
+
+                                        <select ng-model="category" class="btn  btn-default">
+                                            <option value="" disabled selected style="display: none;">Select Category</option>
+                                            <option class="btn  btn-default" ng-repeat="mycat in categories" value="{{mycat.name}}"> {{mycat.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+
+                        <input ng-click="addPost()" class="button theme-button-2" type="submit" value="Submit your Post">
+                    </form>
+                </div>
+
+       </div>
+        </div>
+    </div>
+</section>
